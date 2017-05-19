@@ -23,7 +23,15 @@ pipeline {
                 sh 'mvn clean test'
             }
             post {
-                junit 'target/report_new.xml'
+                success {
+                    echo 'success'
+                }
+                failure {
+                    echo 'failure'
+                }
+                any {
+                    junit 'target/report_new.xml'
+                }
             }
         }
 
