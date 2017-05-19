@@ -23,10 +23,6 @@ pipeline {
             steps {
                 sh 'mvn clean test'
             }
-            catchError {
-                // some block
-                echo 'err'
-            }
             post {
                 success {
                     echo 'success'
