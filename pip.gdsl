@@ -20,7 +20,7 @@ pipeline {
 
         stage('run tests') {
             steps {
-                sh 'mvn test'
+                sh 'mvn clean test'
                 junit 'target/report.xml'
             }
         }
