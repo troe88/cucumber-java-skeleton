@@ -18,24 +18,26 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-
-        stage('run tests') {
-            steps {
-                sh 'mvn clean test'
+        try {
+            stage('run tests') {
+                steps {
+                    sh 'mvn clean test'
+                }
+                post {
+                    success {
+                        echo 'success'
+                    }
+                    failure {
+                        echo 'failure'
+                    }
+                    always {
+                        junit 'target/report_new.xml'
+                    }
+                }
             }
-            post {
-                success {
-                    echo 'success'
-                }
-                failure {
-                    echo 'failure'
-                }
-                always {
-                    junit 'target/report_new.xml'
-                }
-            }
+        } catch (err) {
+            echo err
         }
-
         stage('generate cucumber report') {
             steps {
                 step([
