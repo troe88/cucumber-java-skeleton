@@ -21,7 +21,7 @@ pipeline {
         stage('run tests') {
             steps {
                 sh 'mvn clean test'
-                junit 'target/report.xml'
+                junit 'target/report_new.xml'
             }
         }
 
