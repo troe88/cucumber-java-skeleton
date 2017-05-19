@@ -23,6 +23,10 @@ pipeline {
             steps {
                 sh 'mvn clean test'
             }
+            catchError {
+                // some block
+                echo 'err'
+            }
             post {
                 success {
                     echo 'success'
@@ -33,10 +37,6 @@ pipeline {
                 always {
                     junit 'target/report_new.xml'
                 }
-            }
-            catchError {
-                // some block
-                echo 'err'
             }
         }
 
