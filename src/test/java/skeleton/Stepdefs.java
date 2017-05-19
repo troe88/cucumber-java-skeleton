@@ -21,4 +21,9 @@ public class Stepdefs {
     public void myBellyShouldGrowl() throws Throwable {
         Assert.assertTrue(true);
     }
+
+    @Then("^my belly should growl fail$")
+    public void myBellyShouldGrowlFail() throws Throwable {
+        Assert.assertEquals("qwe", "asd");
+    }
 }
