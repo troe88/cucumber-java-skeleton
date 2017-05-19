@@ -19,14 +19,9 @@ pipeline {
         }
 
         stage('run tests') {
-            try {
-                sh 'mvn clean test'
-            } catch (err) {
-                echo err.message
-                currentBuild.result = 'FAILURE'
-            }
             steps {
-                echo "qwe"
+                def var = sh('mvn clean test')
+                echo var;
             }
             post {
                 success {
