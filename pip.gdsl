@@ -19,14 +19,14 @@ pipeline {
         }
 
         stage('run tests') {
-            steps {
-                try {
-                    sh 'mvn clean test'
-                } catch (err){
-                    echo err.message
-                    currentBuild.result = 'FAILURE'
-                }
+            try {
+                sh 'mvn clean test'
+            } catch (err) {
+                echo err.message
+                currentBuild.result = 'FAILURE'
             }
+//            steps {
+//            }
             post {
                 success {
                     echo 'success'
