@@ -20,8 +20,14 @@ pipeline {
 
         stage('run tests') {
             steps {
-                def var = sh('mvn clean test')
-                echo var;
+                step {
+                    try {
+                        sh 'mvn clean test'
+                    } catch (err) {
+                        echo err.message
+                        currentBuild.result = 'FAILURE'
+                    }
+                }
             }
             post {
                 success {
