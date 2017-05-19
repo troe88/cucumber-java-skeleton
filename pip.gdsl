@@ -35,22 +35,22 @@ pipeline {
             }
         }
 
-//        stage('genarate report') {
-//            steps {
-//                step([
-//                        $class               : 'CucumberReportPublisher',
-//                        failedFeaturesNumber : 0,
-//                        failedScenariosNumber: 0,
-//                        failedStepsNumber    : 0,
-//                        fileExcludePattern   : '',
-//                        fileIncludePattern   : '*.json',
-//                        jsonReportDirectory  : 'auto-tests/target',
-//                        pendingStepsNumber   : 0,
-//                        skippedStepsNumber   : 0,
-//                        undefinedStepsNumber : 0,
-//                        parallelTesting      : true,
-//                ])
-//            }
-//        }
+        stage('generate cucumber report') {
+            steps {
+                step([
+                        $class               : 'CucumberReportPublisher',
+                        failedFeaturesNumber : 0,
+                        failedScenariosNumber: 0,
+                        failedStepsNumber    : 0,
+                        fileExcludePattern   : '',
+                        fileIncludePattern   : '*.json',
+                        jsonReportDirectory  : '/target',
+                        pendingStepsNumber   : 0,
+                        skippedStepsNumber   : 0,
+                        undefinedStepsNumber : 0,
+                        parallelTesting      : true,
+                ])
+            }
+        }
     }
 }
