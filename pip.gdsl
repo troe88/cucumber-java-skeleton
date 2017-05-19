@@ -29,7 +29,7 @@ pipeline {
                 failure {
                     echo 'failure'
                 }
-                any {
+                always {
                     junit 'target/report_new.xml'
                 }
             }
