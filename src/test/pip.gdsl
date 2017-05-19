@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+    }
+    stages {
+        stage('Initialize') {
+            steps {
+                echo 'init'
+                git 'https://github.com/troe88/cucumber-java-skeleton'
+            }
+        }
+
+        stage('compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('run tests') {
+            steps {
+                sh 'mvn test'
+                junit 'target/report.xml'
+            }
+        }
+
+//        stage('genarate report') {
+//            steps {
+//                step([
+//                        $class               : 'CucumberReportPublisher',
+//                        failedFeaturesNumber : 0,
+//                        failedScenariosNumber: 0,
+//                        failedStepsNumber    : 0,
+//                        fileExcludePattern   : '',
+//                        fileIncludePattern   : '*.json',
+//                        jsonReportDirectory  : 'auto-tests/target',
+//                        pendingStepsNumber   : 0,
+//                        skippedStepsNumber   : 0,
+//                        undefinedStepsNumber : 0,
+//                        parallelTesting      : true,
+//                ])
+//            }
+//        }
+    }
+}
