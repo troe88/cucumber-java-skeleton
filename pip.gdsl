@@ -44,7 +44,7 @@ pipeline {
                         failedStepsNumber    : 0,
                         fileExcludePattern   : '',
                         fileIncludePattern   : '*.json',
-                        jsonReportDirectory  : '/target',
+                        jsonReportDirectory  : 'target/',
                         pendingStepsNumber   : 0,
                         skippedStepsNumber   : 0,
                         undefinedStepsNumber : 0,
