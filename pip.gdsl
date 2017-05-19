@@ -25,8 +25,9 @@ pipeline {
                 echo err.message
                 currentBuild.result = 'FAILURE'
             }
-//            steps {
-//            }
+            steps {
+                echo "qwe"
+            }
             post {
                 success {
                     echo 'success'
